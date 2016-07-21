@@ -176,6 +176,7 @@ public class WebSocket extends Transport {
                         }
                     } catch (IOException e) {
                         logger.fine("websocket closed before onclose event");
+                        close();
                     }
 
                     if (0 == --total[0]) done.run();
@@ -190,17 +191,20 @@ public class WebSocket extends Transport {
     }
 
     protected void doClose() {
-        if (wsCall != null) {
-            wsCall.cancel();
-        }
         if (ws != null) {
             try {
                 ws.close(1000, "");
             } catch (IOException e) {
+                close();
                 // websocket already closed
             } catch (IllegalStateException e) {
+                close();
                 // websocket already closed
             }
+        }
+
+        if (wsCall != null) {
+            wsCall.cancel();
         }
     }
 
