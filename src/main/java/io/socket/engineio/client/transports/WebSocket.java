@@ -195,10 +195,8 @@ public class WebSocket extends Transport {
             try {
                 ws.close(1000, "");
             } catch (IOException e) {
-                close();
                 // websocket already closed
             } catch (IllegalStateException e) {
-                close();
                 // websocket already closed
             }
         }
