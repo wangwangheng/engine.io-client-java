@@ -25,12 +25,21 @@ Add the following dependency to your `pom.xml`.
 Add it as a gradle dependency for Android Studio, in `build.gradle`:
 
 ```groovy
-compile ('io.socket:engine.io-client:0.7.0') {
+compile ('com.github.chendrak:engine.io-client-java:engine.io-client-0.7.3') {
   // excluding org.json which is provided by Android
   exclude group: 'org.json', module: 'json'
 }
 ```
 
+If you want to use the official [Socket.IO-client](https://github.com/socketio/socket.io-client-java) with this fork of engine.io, please add this:
+```groovy
+    compile ('io.socket:socket.io-client:0.7.0') {
+        // excluding org.json which is provided by Android
+        exclude group: 'org.json', module: 'json'
+        exclude group: 'io.socket', module: 'engine.io-client'
+    }
+```
+ 
 ## Usage
 Engine.IO-client Java has the similar api with the JS client. You can use `Socket` to connect:
 
