@@ -31,7 +31,7 @@ compile ('com.github.chendrak:engine.io-client-java:engine.io-client-0.7.3') {
 }
 ```
 
-If you want to use the official [Socket.IO-client](https://github.com/socketio/socket.io-client-java) with this fork of engine.io, please add this:
+If you want to use the official [Socket.IO-client](https://github.com/socketio/socket.io-client-java) with this fork of engine.io, please add this to your project:
 ```groovy
     compile ('io.socket:socket.io-client:0.7.0') {
         // excluding org.json which is provided by Android
