@@ -165,6 +165,10 @@ public class WebSocket extends Transport {
 
         final int[] total = new int[] { packets.length };
         for (Packet packet : packets) {
+            if (this.readyState != ReadyState.OPENING && this.readyState != ReadyState.OPEN) {
+                break;
+            }
+
             Parser.encodePacket(packet, new Parser.EncodeCallback() {
                 @Override
                 public void call(Object packet) {
